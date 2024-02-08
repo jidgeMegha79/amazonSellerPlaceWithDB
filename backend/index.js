@@ -6,6 +6,7 @@ const cors = require('cors');
 const axios = require('axios');
 const https = require('https'); 
 const { getUserFinanceData } = require('./financeController');
+const {getUserOrderData} = require ('./orderController')
 
 // Create an Express application
 //use Library
@@ -33,7 +34,7 @@ database.getConnection(function(err){
 })
 
 // Start the server on port 3000
-const PORT = 3002;
+const PORT = 3003;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
@@ -63,3 +64,15 @@ app.post("/api/userFinanceData",async(req,res)=>{
         res.send(error)
     }          
 })
+
+app.post("/api/userOrderData",async(req,res)=>{
+  const access_token = req.body.accessToken 
+ 
+    try{
+      const orderEvents = await getUserOrderData(access_token);
+      console.log(orderEvents)
+    }catch(error){
+      console.log(error)
+      res.send(error)
+    }
+  })

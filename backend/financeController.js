@@ -4,8 +4,8 @@ const https = require('https');
 // Define your finance API URL
 const financeApiUrl = 'https://sellingpartnerapi-eu.amazon.com/finances/v0/financialEvents';
 let nextPageToken = null;
-let startDate ="2023-01-01";
-let endDate ="2023-01-31";
+let startDate ="2023-12-01";
+let endDate ="2023-12-15";
 let financialEvents = [];
 let finalFinanceData = [];
 
